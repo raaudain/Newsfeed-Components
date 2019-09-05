@@ -102,6 +102,22 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  {
+    title: 'Hello Again',
+    date: 'Nov 0th, 3000',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  }
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -129,10 +145,12 @@ const data = [
 
 */
 
+// Connect to articles class in HTML
 const art = document.querySelector(".articles");
 
 function createArticles(title, date, firstParagraph, secondParagraph, thirdParagraph){
   
+  // Declare variables and create elements
   const article = document.createElement("div");
   const articleTitle = document.createElement("h2");
   const articleDate = document.createElement("p");
@@ -141,6 +159,7 @@ function createArticles(title, date, firstParagraph, secondParagraph, thirdParag
   const articleParagraph3 = document.createElement("p");
   const button = document.createElement("span");
 
+  // Append to main div
   article.appendChild(articleTitle);
   article.appendChild(articleDate);
   article.appendChild(articleParagraph1);
@@ -148,10 +167,12 @@ function createArticles(title, date, firstParagraph, secondParagraph, thirdParag
   article.appendChild(articleParagraph3);
   article.appendChild(button);
 
+  // Add classes
   article.classList.add("article");
   articleDate.classList.add("date");
   button.classList.add("expandButton");
 
+  // Add content
   articleTitle.textContent = title;
   articleDate.textContent = date;
   articleParagraph1.textContent = firstParagraph;
@@ -159,6 +180,7 @@ function createArticles(title, date, firstParagraph, secondParagraph, thirdParag
   articleParagraph3.textContent = thirdParagraph;
   button.textContent = "\u23EC";
 
+  // Toggle expand button
   button.addEventListener("click", (e) => {
     article.classList.toggle("article-open");
   })
@@ -166,6 +188,7 @@ function createArticles(title, date, firstParagraph, secondParagraph, thirdParag
   return article;
 }
 
+// Loops through data array
 const newsFeed = data.map(item => {
   art.appendChild(createArticles(item.title,item.date,item.firstParagraph,item.secondParagraph,item.thirdParagraph));
 });

@@ -3,6 +3,7 @@
 let menuItems = [
   'Students',
   'Faculty',
+  "This Works Too",
   "What's New",
   'Tech Trends',
   'Music',
@@ -33,3 +34,37 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+// Connect to header class in HTML
+const header = document.querySelector(".header");
+
+function createMenu(arr){
+
+  // Declare variable and create elements
+  const menu = document.createElement("div");
+  const ul = document.createElement("ul");
+  
+  // Array method that loops through menuItems array and creates li elements
+  arr.forEach(link => {
+    const li = document.createElement("li"); 
+    li.textContent = link;
+    ul.append(li);
+  });
+
+  // Append UL to menu
+  menu.appendChild(ul);
+
+  // Add class
+  menu.classList.add("menu");
+
+  // Creates toggle button
+  const menuButton = document.querySelector(".menu-button");
+  menuButton.addEventListener("click", (e) => {
+    menu.classList.toggle("menu--open");
+  })
+
+  return menu;
+}
+
+// Runs function
+header.appendChild(createMenu(menuItems));
